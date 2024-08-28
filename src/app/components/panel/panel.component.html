@@ -1,0 +1,41 @@
+<h1 class="select-none font-bold text-4xl text-center">DAILY NOTES</h1>
+<div class="select-none m-5 border-white h-full text-center">
+  <form
+    (submit)="addTask($event)"
+    class="grid grid-rows-1 w-fit border-white border-2 p-5 gap-y-4 rounded-md"
+  >
+    <div class="col-span-1 inline-flex gap-x-2">
+      <p>Descripcion:</p>
+      <textarea
+        class="p-1 bg-slate-900 border-2 rounded-md"
+        [formControl]="name"
+        type="text"
+        placeholder="Valor de tarjeta"
+      ></textarea>
+    </div>
+    <div class="col-span-1 inline-flex gap-x-2">
+      <p>Color</p>
+      <input
+        [formControl]="colorP"
+        class="w-full bg-slate-900 rounded-md"
+        type="color"
+        name="colorP"
+        id="colorP"
+      />
+    </div>
+    <button type="submit" class="bg-blue-900 rounded-md p-1 hover:bg-blue-700">
+      Create Note
+    </button>
+  </form>
+  @for (item of task; track $index) {
+  <app-dragtable
+    (deleteTask)="deleteTask($event)"
+    (setPosition)="setPosition($event)"
+    [id]="item.id"
+    [position]="item.position"
+    [colorTask]="item.color"
+  >
+    <p>{{ item.text }}</p></app-dragtable
+  >
+  }
+</div>

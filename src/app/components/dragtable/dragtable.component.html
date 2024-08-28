@@ -1,0 +1,20 @@
+<div 
+  style="
+    background-color: aquamarine;
+    min-height: 120px;
+    width: 150px;
+  "
+  class="select-none h-fit cursor-move absolute opacity-90 text-white font-semibold p-2 rounded-md  "
+  (mousemove)="onMove($event)"
+  (mousedown)="onMouseDown($event)"
+  (mouseup)="isDragtable = false"
+  [ngStyle]="{ 'top.px': verticalP, 'left.px': horizontalP , 'background-color' : colorTask }"
+>
+
+  <ng-content> 
+    
+  </ng-content>
+  <br>
+  <button class="absolute bottom-0 right-0 bg-slate-900 pl-1 rounded-tl-md" (click)="this.deleteTask.emit({id})">X</button>
+
+</div>
